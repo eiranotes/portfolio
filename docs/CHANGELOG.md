@@ -21,4 +21,4 @@ Deploy color-corrected portfolio with 4 independent product disclosures, V1/V2 c
 
 - 첫 화면을 스테인드글라스 키스컷 조각 130개로 만든 두 장의 창(첫 번째 버전 V1 · 두 번째 버전 V2)으로 교체.
 - 테이프 이름을 호버/선택하면 해당 조각만 강조, 조각 확대 보기와 조각 이름 표시 추가.
-- 미배포(로컬 검수 완료).
+- https://app.adeliedraw.com/portfolio/ 에 배포(eeb3d88).

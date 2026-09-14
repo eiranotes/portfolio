@@ -18,3 +18,5 @@ Deployment commit fc05660; GitHub Actions run 34828649151 succeeded. HTTPS 200; 
 ## 2026-09-14 · 키스컷 조각 창
 
 첫 화면을 키스컷 조각 130개(V1 6종 83개, V2 5종 47개)로 만든 두 장의 창으로 교체. 조각 파생본 public/assets/kisscut/ 130개(2.5 MiB) 추가, 미참조 hero 파일 2개 제거, 기존 참조 이미지는 파일명 픽셀 지문이 같아 그대로 유지. check_site.py는 하위 폴더 자산과 조각 개수까지 검사. 배포 검증은 아래 이어서 기록.
+
+배포 완료: https://app.adeliedraw.com/portfolio/ · 커밋 eeb3d88 · Actions 34838053016 성공. 공개 HTML/CSS/JS SHA256 로컬 일치, 조각 이미지 표본 6개와 OG 이미지 원격/로컬 일치. Chrome으로 공개 페이지 1440/390 렌더링: 조각 130개 참조, 실패 요청 0, 콘솔 오류 0, 가로 넘침 0. 캡처 site/qa/deployed-glass-desktop.png / -mobile.png.

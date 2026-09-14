@@ -7,5 +7,6 @@ assert '겨울 풍경' not in s
 assert 'performance.js' not in (p/'app.js').read_text()
 assert s.count('class="product-category"')==4
 assert 'Stained Glass V1' in s and 'Stained Glass V2' in s
+assert s.index('id="top"')<s.index('id="signature"')<s.index('id="series-v1"')  # brand first, then signature work
 assert s.count('class="piece"')==39 and s.count('class="glass-window')==2 and s.count('class="work"')==11
 print('PASS: assets, categories, V1/V2 windows with 39 curated pieces in 11 works, removed winter artwork')

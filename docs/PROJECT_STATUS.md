@@ -29,3 +29,10 @@ Deployment commit fc05660; GitHub Actions run 34828649151 succeeded. HTTPS 200; 
 검증: 320~1440 가로 넘침 0·잘림 0, 콘솔 0, 키보드 확대/닫기/포커스 복귀, 참조 자산 119개 존재, 중복 ID/깨진 앵커 0, node --check. 캡처 site/qa/signature-*.png. 캡션은 묘사형이며 공식 작품 설명이 아님.
 
 배포 완료: https://app.adeliedraw.com/portfolio/ · 커밋 f4ce278 · Actions 34842151918 성공. 공개 HTML/CSS/JS 및 조각 33개 전부 SHA256 로컬 일치. Chrome 공개 페이지 1440/390: 작품 11개, 실패 요청 0, 콘솔 오류 0, 가로 넘침 0. 캡처 site/qa/deployed-signature-*.png.
+
+
+## 2026-09-14 · 브랜드 우선 구조와 금박·은박 선
+
+사용자 피드백 2건 반영. (1) 최상단은 브랜드 소개(공개 프로필 문장 "마음에 담긴 장면을 가장 아름다운 모습으로", K-Illustration Fair 참가자 소개 기반 About 문단, 펭귄 카페 원화 히어로)이고, 대표작(스테인드글라스 키스컷) 인트로는 그 아래 #signature로 이동. 메뉴에 "대표작" 추가. (2) 조각의 검은 선은 실제 제품에서 박 플레이트(PSD "gold foil"/"silver foil" 레이어)이므로, 평탄화 합성 대신 white print → color print(ICC 변환) → foil(금/은 메탈릭 그라디언트) 순으로 직접 합성. 과일·트로피컬·보태니컬·V2 5종은 금박, 바다·연꽃·제비와 아이리스는 은박(레이어 라벨 기준). ImageMagick이 이 PSD들의 레이어 알파를 반전해 보고하는 점을 확인해 커버리지=1-알파로 처리. 은박은 밝은 배경에서 읽히도록 중간 톤(212,218,226→122,133,148) 사용.
+
+검증: 320~1440 넘침 0·잘림 0, 콘솔 0, 키보드 확대/닫기/포커스 복귀, 참조 자산 121개 존재, h1 1개, 중복 ID/깨진 앵커 0. 캡처 site/qa/brand-first-*.png. extract_kisscut.py 부분 재실행 시 기록 병합 버그 수정.

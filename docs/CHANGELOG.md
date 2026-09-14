@@ -29,3 +29,4 @@ Deploy color-corrected portfolio with 4 independent product disclosures, V1/V2 c
 - 헤더 아래에 스테인드글라스 키스컷 대표작 설명과 사양, 대표 조각 6개 추가.
 - 조각 색상을 원본 CMYK 프로파일 기준으로 다시 변환해 과채도 수정.
 - 낮의 창(V1 6종)·밤의 창(V2 5종)을 테이프별 3조각과 제목·설명으로 소개하는 구조로 변경. 전체 130조각 나열 제거.
+- https://app.adeliedraw.com/portfolio/ 에 배포(f4ce278).

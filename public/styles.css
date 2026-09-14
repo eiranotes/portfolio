@@ -35,3 +35,37 @@
 @media(max-width:359px){.glass-hero{--s:0.25px}.glass-window{--s:0.23px}}
 @media(prefers-reduced-motion:reduce){.piece{transition:none}.piece:hover{transform:none}}
 @media print{.glass-window{background:white;color:var(--ink)}.glass-foot,.glass-intro .text-link{display:none}.works{grid-template-columns:repeat(2,1fr)}}
+/* 2026-09 Japan-first scout portfolio / multilingual layer */
+body{font-family:"Hiragino Sans","Yu Gothic","YuGothic","Apple SD Gothic Neo","Malgun Gothic",Arial,sans-serif}
+html[lang="ja"] body{word-break:normal;line-break:strict}
+html[lang="en"] body{word-break:normal}
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.header nav{gap:24px}
+.lang-switch{display:flex;align-items:center;gap:9px;margin-left:4px;padding-left:18px;border-left:1px solid var(--rule);font-size:11px;letter-spacing:.06em}
+.lang-switch a{min-height:44px!important;opacity:.58}
+.lang-switch a[aria-current="page"]{opacity:1;text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:1px}
+.hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px 26px;margin-top:30px}.hero-actions .text-link{margin-top:0}.quiet-link{display:inline-flex;align-items:center;min-height:44px;font-size:13px;color:var(--muted);border-bottom:1px solid transparent}.quiet-link:hover{border-bottom-color:var(--rule)}
+.about-section{padding-top:58px;padding-bottom:62px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(45px,8vw,120px);align-items:start}.about-section h2{font-size:clamp(30px,3vw,42px);max-width:520px}.about-copy{font-size:17px;line-height:1.95;color:var(--muted);max-width:680px}.fact-list{list-style:none;padding:0;margin:32px 0 0;display:flex;flex-wrap:wrap;gap:10px 24px;border-top:1px solid var(--rule);padding-top:20px}.fact-list li{font-size:11px;letter-spacing:.075em;text-transform:uppercase;color:var(--muted)}
+.range-list{list-style:none;padding:0;margin:24px 0 0;display:flex;flex-wrap:wrap;gap:7px}.range-list li{font-size:12px;border:1px solid var(--rule);padding:6px 10px;line-height:1.4;border-radius:999px;color:var(--muted)}
+.category-note{max-width:620px;margin:-4px 0 22px;color:var(--muted);font-size:14px;line-height:1.75}.product-category[open]>summary{margin-bottom:8px}
+.organizer{margin-top:6px;padding-top:66px;padding-bottom:66px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);display:grid;grid-template-columns:1fr 1fr;gap:clamp(55px,8vw,120px);align-items:start}.organizer h2{font-size:clamp(32px,3.5vw,46px);margin-bottom:22px}.organizer-copy>p:not(.eyebrow){max-width:620px;color:var(--muted);font-size:16px;line-height:1.9}.organizer-actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;margin-top:30px}.button-link{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 18px;border:1px solid var(--ink);font-size:14px}.organizer-facts{margin:0;border-top:1px solid var(--ink)}.organizer-facts>div{display:grid;grid-template-columns:130px minmax(0,1fr);gap:20px;padding:14px 0;border-bottom:1px solid var(--rule)}.organizer-facts dt{font-size:12px;color:var(--muted)}.organizer-facts dd{margin:0;font-size:14px;overflow-wrap:anywhere}
+.archive{padding-top:42px;padding-bottom:42px}.archive-details{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}.archive-details>summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:24px;min-height:76px;cursor:pointer;font-size:19px}.archive-details>summary::-webkit-details-marker{display:none}.archive-details>summary span:last-child{font-size:22px;transition:transform .2s ease}.archive-details[open]>summary span:last-child{transform:rotate(45deg)}.archive-note{color:var(--muted);font-size:14px;padding:0 0 30px}.archive-details .glass-window{margin-inline:0}.archive-details .glass-window>.wrap{padding-inline:0}.archive-details .glass-window:first-of-type{border-top:1px solid var(--rule)}
+html[lang="ja"] .hero h1,html[lang="ja"] .glass-intro h2{letter-spacing:-.035em}html[lang="en"] .hero h1,html[lang="en"] .glass-intro h2{letter-spacing:-.04em}html[lang="en"] .hero h1 span{white-space:normal}
+@media(max-width:1180px){.header nav{gap:16px;font-size:13px}.lang-switch{padding-left:10px;gap:6px}.brand{width:165px}}
+@media(max-width:767px){
+ .header nav{gap:0}.lang-switch{border-left:0;border-top:1px solid var(--rule);padding:8px 0 0;margin:8px 0 0;gap:18px}.lang-switch a{min-height:40px!important}
+ .hero-actions{margin-top:20px;gap:4px 20px}.hero-actions .quiet-link{font-size:12px}
+ html[lang="ja"] .hero h1 span,html[lang="en"] .hero h1 span{display:block;white-space:normal;margin-right:0}
+ .about-section{padding-top:42px;padding-bottom:44px;grid-template-columns:1fr;gap:22px}.about-section h2{font-size:30px}.about-copy{font-size:15px}.fact-list{margin-top:22px;gap:9px 16px}
+ .range-list{margin-top:18px}.category-note{font-size:13px;margin-bottom:18px}
+ .organizer{padding-top:44px;padding-bottom:44px;grid-template-columns:1fr;gap:34px}.organizer h2{font-size:31px}.organizer-copy>p:not(.eyebrow){font-size:15px}.organizer-facts>div{grid-template-columns:100px minmax(0,1fr);gap:14px}.organizer-actions{margin-top:22px}
+ .archive{padding-top:26px;padding-bottom:30px}.archive-details>summary{font-size:16px;min-height:68px}.archive-note{font-size:13px;padding-bottom:20px}
+}
+/* Header language switch must not inherit the old last-link underline rule. */
+.header nav .lang-switch a{border-bottom:0!important}.header nav>a:last-of-type{border-bottom:1px solid var(--ink)}
+@media(max-width:767px){.header nav>a:last-of-type{border-bottom:0}}
+
+/* Allow localized signature copy to shrink inside the mobile grid. */
+.glass-intro{min-width:0}
+@media(max-width:767px){html[lang="en"] .glass-intro .eyebrow{overflow-wrap:anywhere}}
+@media(max-width:767px){html[lang="en"] .glass-intro h2 span{white-space:normal}}

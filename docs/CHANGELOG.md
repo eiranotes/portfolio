@@ -36,3 +36,4 @@ Deploy color-corrected portfolio with 4 independent product disclosures, V1/V2 c
 
 - 최상단에 아델리드로우 브랜드 소개(문장·About·원화)를 두고 대표작 소개를 그 아래로 이동, 메뉴에 "대표작" 추가.
 - 키스컷 조각의 선을 검정 대신 실제 제품처럼 금박(과일·트로피컬·보태니컬·V2)과 은박(바다·연꽃·제비와 아이리스)으로 표현.
+- https://app.adeliedraw.com/portfolio/ 에 배포(9d2ed77).

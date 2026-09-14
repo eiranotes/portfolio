@@ -30,7 +30,9 @@ document.querySelectorAll('[data-lightbox]').forEach(link => {
     imageError.hidden = true;
     largeImage.hidden = false;
     largeImage.alt = link.querySelector('img').alt;
-    caption.textContent = largeImage.alt;
+    caption.textContent = link.dataset.caption || largeImage.alt;
+    lightbox.dataset.theme = link.dataset.theme || '';
+    largeImage.style.maxWidth = link.dataset.width ? `${Math.round(link.dataset.width * 1.6)}px` : '';
     largeImage.src = link.href;
     lightbox.showModal();
   });
@@ -43,3 +45,28 @@ lightbox.addEventListener('click', event => {
   if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) lightbox.close();
 });
 lightbox.addEventListener('close', () => { largeImage.removeAttribute('src'); trigger?.focus({preventScroll:true}); });
+document.querySelectorAll('.glass-window').forEach(section => {
+  const pieces = [...section.querySelectorAll('.piece')];
+  const buttons = [...section.querySelectorAll('.legend-tape')];
+  const status = section.querySelector('.glass-status');
+  let pinned = '';
+  const spotlight = (tape) => pieces.forEach(piece => piece.classList.toggle('is-dim', Boolean(tape) && piece.dataset.tape !== tape));
+  buttons.forEach(button => {
+    const tape = button.dataset.tape;
+    button.addEventListener('mouseenter', () => spotlight(pinned || tape));
+    button.addEventListener('focus', () => spotlight(pinned || tape));
+    button.addEventListener('mouseleave', () => spotlight(pinned));
+    button.addEventListener('blur', () => spotlight(pinned));
+    button.addEventListener('click', () => {
+      pinned = pinned === tape ? '' : tape;
+      buttons.forEach(other => other.setAttribute('aria-pressed', String(other.dataset.tape === pinned)));
+      spotlight(pinned);
+    });
+  });
+  pieces.forEach(piece => {
+    const show = () => { status.textContent = piece.dataset.caption; };
+    const reset = () => { status.textContent = status.dataset.idle; };
+    piece.addEventListener('mouseenter', show); piece.addEventListener('focus', show);
+    piece.addEventListener('mouseleave', reset); piece.addEventListener('blur', reset);
+  });
+});

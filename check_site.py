@@ -4,9 +4,9 @@ import html,re
 p=Path('public')
 pages=[('ko',p/'index.html'),('ja',p/'ja/index.html'),('en',p/'en/index.html')]
 expected={
- 'ko':'https://portfolio.adeliedraw.com/',
- 'ja':'https://portfolio.adeliedraw.com/ja/',
- 'en':'https://portfolio.adeliedraw.com/en/',
+ 'ko':'https://info.adeliedraw.com/',
+ 'ja':'https://info.adeliedraw.com/ja/',
+ 'en':'https://info.adeliedraw.com/en/',
 }
 for locale,path in pages:
     assert path.is_file(), path

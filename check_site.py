@@ -25,15 +25,19 @@ for locale,path in pages:
     for href in re.findall(r'<a\b[^>]*\bhref="([^"]+)"',text):
         if href.startswith('#'):
             assert href[1:] in ids, (path,href)
-    for ref in {html.unescape(x) for x in re.findall(r'(?:\.\./)?assets/[^"\s,>]+\.(?:webp|jpg|jpeg|png)',text,re.I)}:
+    for ref in {html.unescape(x) for x in re.findall(r'(?:\.\./)?assets/[^"\s,>]+\.(?:webp|jpg|jpeg|png|svg)',text,re.I)}:
         while ref.startswith('../'): ref=ref[3:]
         assert (p/ref).is_file(), (path,ref)
     assert text.count('class="piece"')==39 and text.count('class="glass-window')==2 and text.count('class="work"')==11, path
     assert text.count('class="product-category"')==4, path
+    for channel in ('https://app.adeliedraw.com/','https://smartstore.naver.com/adeliedraw','https://www.instagram.com/adelie.draw/','https://x.com/canvaswitch_'):
+        assert channel in text, (path, channel)
 
 sitemap=(p/'sitemap.xml').read_text()
 for url in expected.values(): assert url in sitemap,url
 assert 'performance.js' not in (p/'app.js').read_text()
 assert '겨울 풍경' not in (p/'index.html').read_text()
 assert (p/'assets').is_dir()
-print('PASS: 3 locales, assets, hreflang/canonical, indexable metadata, anchors, signature archive and sitemap')
+for icon in ('adelie-app.png','naver-smartstore.png','email.svg','kakao.svg','instagram.svg','x.svg','twenty.svg'):
+    assert (p/'assets/icons'/icon).is_file(), icon
+print('PASS: 3 locales, assets/icons, channel links, hreflang/canonical, indexable metadata, anchors, signature archive and sitemap')

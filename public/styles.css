@@ -69,3 +69,17 @@ html[lang="ja"] .hero h1,html[lang="ja"] .glass-intro h2{letter-spacing:-.035em}
 .glass-intro{min-width:0}
 @media(max-width:767px){html[lang="en"] .glass-intro .eyebrow{overflow-wrap:anywhere}}
 @media(max-width:767px){html[lang="en"] .glass-intro h2 span{white-space:normal}}
+
+/* Channel icons: compact, consistent visual cues for external brand links. */
+.organizer-actions a,.channels a,.contact-links a{gap:9px}
+.organizer-actions a::before,.channels a::before,.contact-links a::before{content:"";width:20px;height:20px;flex:0 0 20px;background-position:center;background-repeat:no-repeat;background-size:contain;border-radius:5px}
+.organizer-actions a[href^="mailto:"]::before,.contact-links a[href^="mailto:"]::before{background-image:url("assets/icons/email.svg")}
+.contact-links a[href*="open.kakao.com"]::before{background-image:url("assets/icons/kakao.svg")}
+.organizer-actions a[href*="smartstore.naver.com"]::before,.channels a[href*="smartstore.naver.com"]::before,.contact-links a[href*="smartstore.naver.com"]::before{background-image:url("assets/icons/naver-smartstore.png")}
+.organizer-actions a[href*="instagram.com"]::before,.contact-links a[href*="instagram.com"]::before{background-image:url("assets/icons/instagram.svg")}
+.organizer-actions a[href*="x.com/"]::before,.contact-links a[href*="x.com/"]::before{background-image:url("assets/icons/x.svg")}
+.channels a[href*="twenty.style"]::before{background-image:url("assets/icons/twenty.svg")}
+.contact-links a[href*="app.adeliedraw.com"]::before{background-image:url("assets/icons/adelie-app.png")}
+.contact-links a{justify-content:flex-start}
+.contact-links a>span:last-child{margin-left:auto}
+@media(max-width:767px){.organizer-actions a::before,.channels a::before,.contact-links a::before{width:22px;height:22px;flex-basis:22px}.contact-links a{gap:11px}}

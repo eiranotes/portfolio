@@ -1,5 +1,5 @@
 from pathlib import Path
-import html,re
+import html,json,re
 
 p=Path('public')
 pages=[('ko',p/'index.html'),('ja',p/'ja/index.html'),('en',p/'en/index.html')]
@@ -17,7 +17,7 @@ for locale,path in pages:
     assert canonical and canonical.group(1)==expected[locale], (path,canonical.group(1) if canonical else None)
     alternates=dict(re.findall(r'<link rel="alternate" hreflang="([^"]+)" href="([^"]+)">',text))
     assert alternates.get('ja')==expected['ja'] and alternates.get('ko')==expected['ko'] and alternates.get('en')==expected['en'], (path,alternates)
-    for required in ('signature','works','products','exhibitions','organizers'):
+    for required in ('signature','schedule','works','products','exhibitions','organizers'):
         assert f'id="{required}"' in text, (path,required)
     assert text.count('class="lang-switch"')==1
     assert text.count('hreflang="ja"')>=2 and text.count('hreflang="ko"')>=2 and text.count('hreflang="en"')>=2
@@ -40,4 +40,16 @@ assert '겨울 풍경' not in (p/'index.html').read_text()
 assert (p/'assets').is_dir()
 for icon in ('adelie-app.png','naver-smartstore.png','email.svg','kakao.svg','instagram.svg','x.svg','twenty.svg'):
     assert (p/'assets/icons'/icon).is_file(), icon
-print('PASS: 3 locales, assets/icons, channel links, hreflang/canonical, indexable metadata, anchors, signature archive and sitemap')
+schedule=json.loads((p/'data/schedule.json').read_text())
+seed=json.loads((p/'data/schedule.seed.json').read_text())
+for data in (schedule,seed):
+    assert data.get('schema')==1
+    assert data.get('timezone')=='Asia/Seoul'
+    assert isinstance(data.get('events'),list)
+    for event in data['events']:
+        assert re.fullmatch(r'\d{4}-\d{2}-\d{2}',event['start'])
+        assert re.fullmatch(r'\d{4}-\d{2}-\d{2}',event.get('end',event['start']))
+        assert event.get('type') in {'schedule','major','blocked'}
+assert 'data-monthly-schedule' in (p/'index.html').read_text()
+assert 'data-repo-path="public/data/schedule.json"' in (p/'index.html').read_text()
+print('PASS: 3 locales, assets/icons, monthly schedule, channel links, hreflang/canonical, indexable metadata, anchors, signature archive and sitemap')

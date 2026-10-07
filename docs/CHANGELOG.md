@@ -42,3 +42,4 @@ Deploy color-corrected portfolio with 4 independent product disclosures, V1/V2 c
 
 - Shared brand bar (Info current; Shop follows locale: shop./jp./en.), shared footer with penguin cameo, woodfree paper background, `--ad-*` tokens with legacy aliases.
 - LINE Seed has only 400/700: every 500 request became 400. Eyebrows are 12px bold indigo; heading tracking follows the shared display token; content width follows the shared content width and gutter.
+- Signature section "빛이 스며드는 창": a day/night switch (KO/JA/EN labels) turns the section into the V2 night pane with backlit pieces, and a light band runs across the foil lines under the pointer (or once as the section comes into view on touch screens). Reduced motion keeps the switch but drops the light band.

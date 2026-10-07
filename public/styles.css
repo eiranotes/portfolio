@@ -83,3 +83,23 @@ html[lang="ja"] .hero h1,html[lang="ja"] .glass-intro h2{letter-spacing:-.035em}
 .contact-links a{justify-content:flex-start}
 .contact-links a>span:last-child{margin-left:auto}
 @media(max-width:767px){.organizer-actions a::before,.channels a::before,.contact-links a::before{width:22px;height:22px;flex-basis:22px}.contact-links a{gap:11px}}
+/* Light through a small window (light.js): a day/night switch for the signature section and a light band over the foil lines. The band is the page's one foil moment. */
+#signature{box-shadow:0 0 0 100vmax transparent;clip-path:inset(0 -100vmax);transition:background-color var(--ad-dur-slow) ease,box-shadow var(--ad-dur-slow) ease,color var(--ad-dur-slow) ease}
+#signature.is-night{--ink:var(--ad-night-ink);--muted:var(--ad-night-ink-2);--rule:var(--ad-night-rule);--accent:var(--ad-night-ink);background:var(--ad-night);box-shadow:0 0 0 100vmax var(--ad-night);color:var(--ink);border-top-color:transparent}
+#signature.is-night .piece img{filter:drop-shadow(0 0 20px rgba(211,221,240,.24))}
+.light-toggle{display:flex;width:fit-content;margin-top:22px;padding:3px;border:1px solid var(--rule);border-radius:var(--ad-radius-control)}
+.light-toggle button{min-height:40px;min-width:84px;padding:0 16px;border-radius:var(--ad-radius-control);color:var(--muted);font-size:13px;transition:background-color var(--ad-dur-fast) ease,color var(--ad-dur-fast) ease}
+.light-toggle button[aria-pressed=true]{background:var(--accent);color:var(--ad-paper)}
+#signature.is-night .light-toggle button[aria-pressed=true]{color:var(--ad-night)}
+.light-toggle+.text-link{margin-top:14px}
+.piece.has-sheen{position:relative}
+.piece.has-sheen::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;mix-blend-mode:screen;
+  background:linear-gradient(105deg,transparent 38%,rgba(255,246,214,.55) 46%,rgba(255,255,255,.9) 50%,rgba(220,232,255,.5) 54%,transparent 62%) no-repeat;
+  background-size:300% 100%;background-position:var(--light,85%) 0;
+  -webkit-mask:var(--piece-src) center/100% 100% no-repeat;mask:var(--piece-src) center/100% 100% no-repeat;
+  transition:opacity var(--ad-dur) ease,background-position 120ms linear}
+.glass-cluster[style*="--light"] .piece.has-sheen::after{opacity:1}
+.glass-cluster.is-sweeping .piece.has-sheen::after{animation:light-sweep 1.6s var(--ad-ease) both}
+@keyframes light-sweep{0%{opacity:0;background-position:85% 0}15%{opacity:1}85%{opacity:1}100%{opacity:0;background-position:15% 0}}
+@media(prefers-reduced-motion:reduce){#signature,.light-toggle button{transition:none}.piece.has-sheen::after{display:none}}
+@media print{#signature.is-night{background:none;box-shadow:none;--ink:#211C17;--muted:#665E55}}

@@ -1,5 +1,5 @@
 from pathlib import Path
-import html,re
+import hashlib,html,json,re
 
 p=Path('public')
 pages=[('ko',p/'index.html'),('ja',p/'ja/index.html'),('en',p/'en/index.html')]
@@ -20,6 +20,9 @@ for locale,path in pages:
     for required in ('signature','works','products','exhibitions','organizers'):
         assert f'id="{required}"' in text, (path,required)
     assert text.count('class="lang-switch"')==1
+    shop={'ko':'https://shop.adeliedraw.com/','ja':'https://jp.adeliedraw.com/','en':'https://en.adeliedraw.com/'}[locale]
+    assert 'class="ad-brandbar"' in text and 'href="https://info.adeliedraw.com/" aria-current="page">Info</a>' in text and f'href="{shop}">Shop</a>' in text, (path,'brand bar')
+    assert 'font-weight:500' not in (p/'styles.css').read_text(), 'LINE Seed has no 500 weight'
     assert text.count('hreflang="ja"')>=2 and text.count('hreflang="ko"')>=2 and text.count('hreflang="en"')>=2
     ids=set(re.findall(r'\bid="([^"]+)"',text))
     for href in re.findall(r'<a\b[^>]*\bhref="([^"]+)"',text):
@@ -38,6 +41,9 @@ for url in expected.values(): assert url in sitemap,url
 assert 'performance.js' not in (p/'app.js').read_text()
 assert '겨울 풍경' not in (p/'index.html').read_text()
 assert (p/'assets').is_dir()
+brand=json.loads((p/'brand/MANIFEST.json').read_text())
+for name,digest in brand['files'].items():
+    assert hashlib.sha256((p/'brand'/name).read_bytes()).hexdigest()==digest,('Edited vendored brand file; sync from adelie-web-design',name)
 for icon in ('adelie-app.png','naver-smartstore.png','email.svg','kakao.svg','instagram.svg','x.svg','twenty.svg'):
     assert (p/'assets/icons'/icon).is_file(), icon
-print('PASS: 3 locales, assets/icons, channel links, hreflang/canonical, indexable metadata, anchors, signature archive and sitemap')
+print('PASS: 3 locales, brand copy and brand bar, assets/icons, channel links, hreflang/canonical, indexable metadata, anchors, signature archive and sitemap')

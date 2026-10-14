@@ -33,6 +33,10 @@ for locale,path in pages:
         assert (p/ref).is_file(), (path,ref)
     assert text.count('class="piece"')==39 and text.count('class="glass-window')==2 and text.count('class="work"')==11, path
     assert text.count('class="product-category"')==4, path
+    stockists=text.split('id="stockists"',1)[1].split('</div>',1)[0]
+    assert all(store in stockists for store in ('https://shop.adeliedraw.com/','https://en.adeliedraw.com/','https://jp.adeliedraw.com/')), (path,'official stores in sales channels')
+    assert text.count('class="text-link category-shop" href="'+shop+'?category=')==4, (path,'store link per product category')
+    assert 'class="sr-only"' not in ''.join(re.findall(r'<a class="image-link"[^>]*>.*?</a>',text)), (path,'image link repeats its aria-label')
     for channel in ('https://app.adeliedraw.com/','https://smartstore.naver.com/adeliedraw','https://www.instagram.com/adelie.draw/','https://x.com/canvaswitch_'):
         assert channel in text, (path, channel)
 
@@ -44,6 +48,6 @@ assert (p/'assets').is_dir()
 brand=json.loads((p/'brand/MANIFEST.json').read_text())
 for name,digest in brand['files'].items():
     assert hashlib.sha256((p/'brand'/name).read_bytes()).hexdigest()==digest,('Edited vendored brand file; sync from adelie-web-design',name)
-for icon in ('adelie-app.png','naver-smartstore.png','email.svg','kakao.svg','instagram.svg','x.svg','twenty.svg'):
+for icon in ('adelie-app.png','adelie-draw.png','naver-smartstore.png','email.svg','kakao.svg','instagram.svg','x.svg','twenty.svg'):
     assert (p/'assets/icons'/icon).is_file(), icon
 print('PASS: 3 locales, brand copy and brand bar, assets/icons, channel links, hreflang/canonical, indexable metadata, anchors, signature archive and sitemap')

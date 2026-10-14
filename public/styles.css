@@ -80,6 +80,7 @@ html[lang="ja"] .hero h1,html[lang="ja"] .glass-intro h2{letter-spacing:-.035em}
 .organizer-actions a[href*="x.com/"]::before,.contact-links a[href*="x.com/"]::before{background-image:url("assets/icons/x.svg")}
 .channels a[href*="twenty.style"]::before{background-image:url("assets/icons/twenty.svg")}
 .organizer-actions a[href*="app.adeliedraw.com"]::before,.contact-links a[href*="app.adeliedraw.com"]::before{background-image:url("assets/icons/adelie-app.png")}
+.organizer-actions a[href^="https://shop.adeliedraw.com/"]::before,.organizer-actions a[href^="https://en.adeliedraw.com/"]::before,.organizer-actions a[href^="https://jp.adeliedraw.com/"]::before,.channels a[href^="https://shop.adeliedraw.com/"]::before,.channels a[href^="https://en.adeliedraw.com/"]::before,.channels a[href^="https://jp.adeliedraw.com/"]::before{background-image:url("assets/icons/adelie-draw.png")}
 .contact-links a{justify-content:flex-start}
 .contact-links a>span:last-child{margin-left:auto}
 @media(max-width:767px){.organizer-actions a::before,.channels a::before,.contact-links a::before{width:22px;height:22px;flex-basis:22px}.contact-links a{gap:11px}}
@@ -103,3 +104,4 @@ html[lang="ja"] .hero h1,html[lang="ja"] .glass-intro h2{letter-spacing:-.035em}
 @keyframes light-sweep{0%{opacity:0;background-position:85% 0}15%{opacity:1}85%{opacity:1}100%{opacity:0;background-position:15% 0}}
 @media(prefers-reduced-motion:reduce){#signature,.light-toggle button{transition:none}.piece.has-sheen::after{display:none}}
 @media print{#signature.is-night{background:none;box-shadow:none;--ink:#211C17;--muted:#665E55}}
+.product-category .category-shop{margin-top:28px;margin-bottom:30px}@media(max-width:767px){.product-category .category-shop{margin-top:20px;margin-bottom:24px}}

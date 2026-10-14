@@ -43,3 +43,9 @@ Deploy color-corrected portfolio with 4 independent product disclosures, V1/V2 c
 - Shared brand bar (Info current; Shop follows locale: shop./jp./en.), shared footer with penguin cameo, woodfree paper background, `--ad-*` tokens with legacy aliases.
 - LINE Seed has only 400/700: every 500 request became 400. Eyebrows are 12px bold indigo; heading tracking follows the shared display token; content width follows the shared content width and gutter.
 - Signature section "빛이 스며드는 창": a day/night switch (KO/JA/EN labels) turns the section into the V2 night pane with backlit pieces, and a light band runs across the foil lines under the pointer (or once as the section comes into view on touch screens). Reduced motion keeps the switch but drops the light band.
+
+## 2026-10-14 · Official store links
+
+- Sales channels and the buyer section list the official stores first (KO page: shop. / en. / jp.; JA page: jp. first; EN page: en. first) with the Adelie Draw icon; JSON-LD `sameAs` includes the three stores.
+- Kiss-cut collection (V1/V2) and each of the four product categories link to the matching filter on the locale's store (memo → paper, stickers → sticker, kiss-cut → kisscut, postcards & small goods → all).
+- Gallery links no longer repeat their name three times for screen readers: the hidden `sr-only` span is gone and the link label says what it does ("… 크게 보기" / "拡大表示" / "Enlarge"), like the kiss-cut pieces.
